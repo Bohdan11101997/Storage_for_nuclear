@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>РРВ</title>
+	<link rel="shortcut icon" href="images/radioactive.png" type="image x-icon">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/var36_css.css">
+</head>
+<body>
+
+<div class="container" >
+    <div class = "jumbotron " id="mainJumbo">
+        <div class="row" >
+
+            <div  class = "menuList">
+
+                <script src="js/menu.js" type="text/javascript"></script>
+
+            </div>
+        </div>
+
+        <div class="boxTab">
+            <div class="row tabl">
+                <div class="titlStorage">
+                    <H3>Список РРВ </H3>
+                </div>
+
+                <table>
+                    <tr>
+                        <th>#</th>
+                        <th>Номер сховища</th>
+                        <th>Тип</th>
+                        <th>Список нуклідів</th>
+                        <th>Дата початку зберігання</th>
+                        <!--<th>Назва приладу</th>-->
+                        <!--<th>Дата початку зберігання</th>-->
+                        <th>Характеристики</th>
+                        <th>Примітки</th>
+                        <th>
+                            <a class=" material-icons button edit"th:href="${'/rrvNEW'}">add</a>
+                        </th>
+
+                    </tr>
+
+              <tr th:each="rrv:  ${AllRrvs}">
+                  <td th:text="${rrv.RRV_id}"></td>
+                  <td th:text="${rrv.storage_id}"></td>
+                  <td th:text="${rrv.category}"></td>
+                  <td th:text="${rrv.nuclide_list}"></td>
+                  <td th:text="${rrv.Storage_start_date}"></td>
+                  <td th:text="${rrv.Character_RRV}"></td>
+                  <td th:text="${rrv.Notes_RRV}"></td>
+
+              <td>
+                  <a class="material-icons button edit" th:href="${'/rrv/edit/' + rrv.RRV_id}">create</a>
+                  <a class="material-icons button delete" th:href="${'/rrv/delete/' + rrv.RRV_id}">delete</a>
+                  </td>
+
+                </tr>
+
+            </table>
+          </div>
+        </div>
+          <div class="row row1">
+
+   
+       <div class=" registration form1 ">
+        <div class="signHead">
+            <a class="goToRegistration" >Сортування</a>
+          </div>
+            <form method="post" action="">
+                <a th:href="${'/OrderbyDataRRV' }">Сортувати за датою</a>
+                <a th:href="${'/OrderByCategoryRRV' }">Сортувати за категорією</a>
+
+
+            </form>
+          </div>
+     
+        <div class=" registration form2 ">
+        <div class="signHead ">
+            <table>
+                <tr>
+                    <th>Загальна активність</th>
+                    <th>Загальна кількість</th>
+                <tr>
+                    <td th:text="${All_Activity_RRVS}"></td>
+                    <td th:text="${All_Amount_RRVS}"></td>
+                </tr>
+            </table>
+        </div>
+        </div>
+
+          </div>
+    </div>
+
+</div>
+
+</body>
+</html>

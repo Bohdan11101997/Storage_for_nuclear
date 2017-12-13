@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>ДІВ</title>
+	<link rel="shortcut icon" href="images/radioactive.png" type="image x-icon">
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/var36_css.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+<div class="container" >
+    <div class = "jumbotron " id="mainJumbo">
+        <div class="row" >
+
+            <div  class = "menuList">
+
+                <script src="js/menu.js" type="text/javascript"></script>
+
+            </div>
+        </div>
+
+        <div class="boxTab">
+            <div class="row tabl">
+                <div class="titlStorage">
+                    <H3>Список ДІВ </H3>
+                </div>
+
+          <table>
+               <tr>
+                  <th>#</th>
+                  <th>Номер сховища</th>
+                  <th>Тип</th>
+                  <th>Список нуклідів</th>        
+                  <th>Дата початку зберігання</th>
+                  <th>Назва приладу</th>  
+                  <th>Дата виготовлення</th>
+                  <!--<th>Огранізація</th>  -->
+                  <th>Примітки</th>  
+                  <th> 
+                    <a class=" material-icons button edit"th:href="${'/divNEW'}">add</a>
+                  </th>
+
+                </tr>
+              <tr th:each="divA:  ${AllDivs}">
+                  <td th:text="${divA.Div_id}"></td>
+                  <td th:text="${divA.storage_id}"></td>
+                  <td th:text="${divA.type_div}"></td>
+                  <td th:text="${divA.nuclide_list}"></td>
+                  <td th:text="${divA.date_of_create_storage}"></td>
+                  <td th:text="${divA.name_device}"></td>
+                  <td th:text="${divA.date_of_create}"></td>
+                  <td th:text="${divA.notes}"></td>
+                  <td>
+                      <a class="material-icons button edit" th:href="${'/div/edit/' + divA.Div_id}">create</a>
+                      <a class="material-icons button delete" th:href="${'/div/delete/' + divA.Div_id}">delete</a>
+                  </td>
+
+                </tr>
+              
+
+               </tr>
+            </table>
+            </div>
+          </div>
+<div class="row row1">
+
+   
+       <div class=" registration form1 ">
+        <div class="signHead">
+            <a class="goToRegistration" >Сортування</a>
+          </div>
+            <form method="post" action="">
+                <a th:href="${'/OrderbyData_Create' }">Сортувати за датою створення</a>
+                <a th:href="${'/OrderbyData_Storage' }">Сортувати за датою початку зберігання</a>
+
+            </form>
+          </div>
+     
+        <div class=" registration form2 ">
+        <div class="signHead ">
+            <table>
+                <tr>
+                    <th>Загальна активність</th>
+                    <th>Загальна кількість</th>
+                <tr>
+                    <td th:text="${All_Activity_DIVS}"></td>
+                    <td th:text="${All_Amount_DIVS}"></td>
+                </tr>
+            </table>
+        </div>
+        </div>
+
+</div>
+    </div>
+
+</div>
+
+</body>
+</html>

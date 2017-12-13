@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en"
+	  xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Запис</title>
+	<link rel="shortcut icon" href="images/radioactive.png" type="image x-icon">
+	<!--<link rel="stylesheet" type="text/css" href="css/reset.css">-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!--<link rel="stylesheet" type="text/css" href="css/var36_css.css">-->
+	  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<style>
+		html, body, div, span, applet, object, iframe,
+		h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+		a, abbr, acronym, address, big, cite, code,
+		del, dfn, em, img, ins, kbd, q, s, samp,
+		small, strike, strong, sub, sup, tt, var,
+		b, u, i, center,
+		dl, dt, dd, ol, ul, li,
+		fieldset, form, label, legend,
+		table, caption, tbody, tfoot, thead, tr, th, td,
+		article, aside, canvas, details, embed,
+		figure, figcaption, footer, header, hgroup,
+		menu, nav, output, ruby, section, summary,
+		time, mark, audio, video {
+			margin: 0;
+			padding: 0;
+			border: 0;
+			font-size: 100%;
+			font: inherit;
+			vertical-align: baseline;
+		}
+		/* HTML5 display-role reset for older browsers */
+		article, aside, details, figcaption, figure,
+		footer, header, hgroup, menu, nav, section {
+			display: block;
+		}
+		body {
+			line-height: 1;
+		}
+		ol, ul {
+			list-style: none;
+		}
+		blockquote, q {
+			quotes: none;
+		}
+		blockquote:before, blockquote:after,
+		q:before, q:after {
+			content: '';
+			content: none;
+		}
+		table {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+		body{
+			background-color: #8ad2ce;
+			font-family: 'Lucida Grande', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+			padding: 20px 50px 150px;
+			font-size: 13px;
+			text-align: center;
+
+		}
+
+		.jumbotron{
+			background-color: #f2f3f0;
+			margin-top: 10px;
+
+		}
+		#mainJumbo{
+			padding-top: 0;
+		}
+
+		.btn{
+
+			width: 180%;
+			background-color: #f2f3f0;
+			color: #1c2232;
+			font-weight: 500;
+			border: 2px solid;
+			border-color: #8ad2ce;
+			border-radius: 1px;
+			transition: 0.2s;
+		}
+		.btn:hover {
+			color: #1c2232;
+			background-color: #f2f3f0;
+			border-color: #3b6ba5;
+		}
+
+		.btn:active {
+			color: #1c2232 !important;
+			border-color: #5db8d3 !important;
+			background-color: #b1d3e3 !important;
+		}
+
+		/*START PAGE*/
+		.title{
+			margin-top: 3%;
+			padding-top: 10px;
+			margin-bottom: 50px;
+			text-align: center;
+			color: black;
+			font-weight: bold;
+		}
+		.mainIcon{
+
+		}
+
+		.startBtn{
+			margin-left: 36%;
+		}
+
+
+
+		/*Resgistration,sign-in page*/
+
+		.signIn{
+			background-color: #f2f3f0;
+			/*border-top: 2px solid #8ad2ce;*/
+			margin: 30% auto;
+			padding-top:0;
+			margin-top: 0;
+			margin-bottom: 5%;
+			padding-bottom: 3%;
+			max-width: 350px;
+		}
+		.registration{
+			background-color: #f2f3f0;
+			border-top: 2px solid #8ad2ce;
+			border-radius: 4px;
+			margin: 30% auto;
+			padding-top: 3%;
+			margin-top: 10%;
+			padding-bottom: 3%;
+			max-width: 350px;
+			text-align: left;
+		}
+		.signIn input{
+			border: 2px solid #8ad2ce;
+			display: block;
+			width: 90%;
+			margin: 10px auto;
+			padding-left: 2%;
+			padding-top: 1.5%;
+			padding-bottom: 1.5%;
+		}
+		.registration input{
+			border: 2px solid #8ad2ce;
+			display: block;
+			width: 90%;
+			margin: 10px auto;
+			padding-left: 2%;
+			padding-top: 1.5%;
+			padding-bottom: 1.5%;
+		}
+		.signIn .signHead{
+
+			margin: 0;
+			padding: 0;
+			font-size: 1.5em;
+		}
+		.signIn form{
+			padding-top: 5%;
+		}
+		.signIn .signHead p{
+
+			margin: 0;
+			padding: 0;
+		}
+		.registration .signHead{
+			margin: 0;
+			padding: 0;
+			font-size: 1.5em;
+		}
+		.registration form{
+			padding-top: 5%;
+		}
+		.registration .signHead p{
+			margin: 0;
+			padding: 0;
+		}
+		.goToSingIn, .goToRegistration{
+			text-align: left;
+			display: inline-block;
+			text-decoration: none;
+			color: inherit;
+			padding-left: 5%;
+			padding-top: 2%;
+			width: 87%;
+			margin: 0;
+			border: none;
+		}
+		.goToSingIn:hover{
+			text-decoration: none;
+			color: #1c2232;
+		}
+		.goToRegistration:hover{
+			text-decoration: none;
+			color: #1c2232;
+		}
+		.goToSingIn:hover:not(.offFocus), .goToRegistration:hover:not(.offFocus){
+			color: #0053a0;
+		}
+		.offFocus{
+			background-color: #dfe4e9;
+			border-left: 2px solid #8ad2ce;
+			border-bottom: 2px solid #8ad2ce;
+			float: left;
+			border-top: none;
+			border-left: none;
+			color: #0053a0;
+		}
+		.goToSingIn + .offFocus{
+			float: right;
+			border-bottom: 2px solid #8ad2ce;
+			border-right: none;
+		}
+
+		.signIn input[type="submit"]{
+
+			background-color: #f2f3f0;
+			color: #1c2232;
+			font-weight: bold;
+			font-size: 1.2em;
+			border: 2px solid;
+			border-color: #8ad2ce;
+			margin-top: 25px;
+			padding-bottom: 5px;
+			padding-top: 5px;
+			border-radius: 1px;
+			transition: 0.2s;
+		}
+
+		.signIn input[type="submit"]:hover{
+			background: #555;
+			color: #fff;
+			border-color: #555;
+		}
+		.registration input[type="submit"]{
+
+			background-color: #f2f3f0;
+			color: #1c2232;
+			font-weight: bold;
+			font-size: 1.2em;
+			border: 2px solid;
+			border-color: #8ad2ce;
+			margin-top: 25px;
+			padding-bottom: 5px;
+			padding-top: 5px;
+			border-radius: 1px;
+			transition: 0.2s;
+		}
+
+		.registration input[type="submit"]:hover{
+			/* color: #1c2232;
+             background-color: #f2f3f0; */
+			background: #555;
+			color: #fff;
+			border-color: #555;
+		}
+
+
+
+		.menuList{
+			width: 100%;
+			height: 50px;
+			margin-left: 0%;
+			z-index: 1;
+
+
+		}
+
+		.information{
+
+			margin-top: 10%;
+			margin-right: 19.3%;
+			margin-left: 19.3%;
+			padding-right: 10%;
+			border-left: 2px solid #8ad2ce;
+			border-right: 2px solid #8ad2ce;
+		}
+		.infHeader{
+			margin-top: 0;
+			margin-left: 3%;
+
+		}
+		.infText{
+			font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+			text-indent: 20px;
+			margin-left: 3%;
+			text-align: left;
+		}
+
+
+		ul {
+			text-align: left;
+			display: inline;
+			width: 700px;
+			padding: 15px 0px 17px 0;
+			list-style: none;
+			border-left: 2px solid;
+
+			border-color:  #8ad2ce;
+		}
+		ul li {
+			font: bold 12px/18px sans-serif;
+			display: inline-block;
+			/* margin-right: -4px;*/
+			position: relative;
+			padding: 15px 30px;
+			background: #f2f3f0;
+			cursor: pointer;
+			-webkit-transition: all 0.2s;
+			-moz-transition: all 0.2s;
+			-ms-transition: all 0.2s;
+			-o-transition: all 0.2s;
+			transition: all 0.2s;
+		}
+		ul li:hover {
+			background: #555;
+			color: #fff;
+		}
+		ul li ul {
+			padding: 0;
+			position: absolute;
+			top: 48px;
+			left: -2px;
+			width: 150px;
+			-webkit-box-shadow: none;
+			-moz-box-shadow: none;
+			box-shadow: none;
+			display: none;
+			opacity: 0;
+			visibility: hidden;
+			-webkit-transiton: opacity 0.2s;
+			-moz-transition: opacity 0.2s;
+			-ms-transition: opacity 0.2s;
+			-o-transition: opacity 0.2s;
+			-transition: opacity 0.2s;
+		}
+		ul li ul li {
+			background: #555;
+			display: block;
+			color: #fff;
+			text-shadow: 0 -1px 0 #000;
+		}
+		ul li ul li:hover { background: #666; }
+		ul li:hover ul {
+			display: block;
+			opacity: 1;
+			visibility: visible;
+		}
+
+		#referenceBtn{
+			border-right: 2px solid #8ad2ce;
+		}
+
+		#adminBtn{
+			border-left: 2px solid #8ad2ce;
+			border-right: 2px solid #8ad2ce;
+
+		}
+
+		.boxTab {
+			margin-top: 5%;
+			width: 100%;
+			height: 545px;
+			overflow: hidden;
+			border: 2px solid #C1C1C1;
+			overflow-x: scroll; /* прокрутка по горизонтали */
+			overflow-y: scroll; /* прокрутка по вертикали */
+		}
+
+		.tabl{
+			overflow: auto;
+			margin-top: 3%;
+			margin-left: 1%;
+			margin-bottom: 3%;
+		}
+		.titlStorage{
+			margin-left: 0;
+			padding-bottom: 0;
+			margin-bottom: 2%;
+			margin-right: 50%;
+			color: #555;
+			border-bottom:  2px solid #8ad2ce;
+		}
+
+		table {
+
+			border-top:  2px solid #8ad2ce;
+			border-right: 2px solid #8ad2ce;
+			border-left: 2px solid #8ad2ce;
+			border-bottom:2px solid #8ad2ce;
+			font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+			font-size: 14px;
+			background: white;
+			max-width: 100%;
+			width: 98%;
+			border-collapse: collapse;
+			text-align: left;
+		}
+		th {
+			font-weight: normal;
+			color: #555;
+			border-bottom:2px solid #8ad2ce;
+			padding: 12px 8px;
+		}
+		td {
+			color: #555;
+			padding: 12px 8px;
+			transition: .2s linear;
+
+		}
+		tr:hover td {
+			background-color: #dfe4e9;
+			color: black;
+		}
+		tr:hover th {
+			background-color: #dfe4e9;
+			color: black;
+		}
+		th:first-child,
+		td:first-child {
+			width: 5%;
+			padding: 0 5px 0 15px;
+		}
+		td:last-child {
+			text-align: right;
+			margin-right: 0;
+			padding-right: 2%;
+
+		}
+		th:last-child  {
+			padding-right: 2%;
+			text-align: right;
+		}
+
+
+		.button {
+			color: #aaa;
+			padding-right: 2%;
+			cursor: pointer;
+			vertical-align: middle;
+			margin-top: -4px;
+		}
+
+		.edit:hover {
+			color: #0a79df;
+			text-decoration: none;
+
+		}
+
+		.delete:hover {
+			color: #ee3557;
+			text-decoration: none;
+		}
+
+
+		.chElTab{
+			margin-top: 5%;
+		}
+
+		* { box-sizing: border-box; padding:0; margin:0; }
+
+		.wrapper {
+
+			width: 1050px;
+			margin:30px auto;
+			position: relative;
+		}
+
+		.main{
+			border: none;
+		}
+
+		.main:after {
+			clear:both;
+			content:"";
+			display:table;
+		}
+		.wraper ul{
+			border-right: 0
+		}
+
+		.main li {
+			width:56px;
+			height:60px;
+			margin-right: 0;
+			border:1px solid rgba(0,0,0,0.3);
+			box-shadow:inset 0 1px 0 rgba(255,255,255,0.4);
+			position:relative;
+			font-size:18px;
+			float:left;
+			padding:0 2px;
+			margin:1px;
+			cursor:pointer;
+			padding-top:20px;
+			overflow:hidden;
+			transition:all .2s ease-in;
+			text-shadow:0 1px 0 rgba(255,255,255,0.2);
+		}
+
+		.main li span {
+			display:block;
+			line-height:1;
+			font-size:9px;
+			color:black;
+			padding-top:7px;
+		}
+
+		.main .empty {
+			border:none;
+			box-shadow:none;
+			cursor:default;
+		}
+
+		.deactivate {
+			opacity:0.5;
+			-webkit-filter:grayscale(70%);
+			filter:grayscale(70%);
+		}
+
+		.main li:before,
+		.main li:after {
+			content:attr(data-pos);
+			position:absolute;
+			top:3px;
+			left:3px;
+			color:black;
+			font-size:8px;
+			line-height:1;
+		}
+
+		.main li:after {
+			content:attr(data-nb);
+			left:auto;
+			right:3px;
+		}
+
+		.main li:hover {
+			transform:scale(2);
+			z-index:100;
+			box-shadow: 0 0 10px rgba(0,0,0,0.3);
+		}
+
+		.main .empty:hover {
+			box-shadow:none;
+			transform:none;
+		}
+
+		.type-0 { background:#fff; }
+		.type-1 { background:#dddddd; }
+		.type-2 { background:#a8bffa; }
+		.type-3 { background:#F8B707; }
+		.type-4 { background:#f3f300; }
+		.type-5 { background:#3bd93b; }
+		.type-6 { background:#dd9999; }
+		.type-7 { background:#4CAFFA; }
+		.type-8 { background:#ffaa88; }
+		.type-9 { background:#ddaacc; }
+
+		.cat-0 { color:#222; }
+		.cat-1 { color:#0000dc; }
+		.cat-2 { color:#b10601; }
+		.cat-3 { color:#555; }
+
+		.row1 {
+			display:inline-block;
+			margin-left: 0;
+			width: 100%
+		}
+
+
+		.form1{
+
+			margin-top: 2%;
+			margin-left: 0.2%;
+			margin-bottom: 10%;
+			margin-right: 5%;
+			border-top:none;
+
+			width: 60%;
+			float: left;
+			border-right: 2px solid #8ad2ce;
+			border-left:  2px solid #8ad2ce;
+			border-radius: 0;
+			padding-top: 0;
+			padding-bottom: 0;
+			padding-left: 5%;
+			padding-right: 5%;
+		}
+		.form1 form {
+			padding-top: 0;
+		}
+
+		.form1 input{
+
+			border: 2px solid #8ad2ce;
+			display: block;
+			width: 90%;
+			background-color: #e1ebec;
+			margin: 10px auto;
+			padding-left: 2%;
+			padding-top: 2%;
+			padding-bottom: 1.5%;
+		}
+
+		.form2{
+
+			margin-top: 2%;
+			margin-left: 3%;
+			margin-bottom: 10%;
+			margin-right: 1.25%;
+			border-top:none;
+
+			width: 50%;
+			float: right;
+			border-right: 2px solid #8ad2ce;
+			border-left: 2px solid #8ad2ce;
+			border-radius: 0;
+			padding-top: 0%;
+			padding-bottom: 0;
+			padding-left: 5%;
+			padding-right: 5%;
+		}
+
+		.form2 input{
+
+			border: 2px solid #8ad2ce;
+			display: block;
+			width: 90%;
+			background-color: #e1ebec;
+			margin: 9px auto;
+			padding-left: 2%;
+			padding-top: 2%;
+			padding-bottom: 1.5%;
+		}
+
+
+
+		.form2 form {
+			padding-top: 0 !important;
+		}
+
+		.form2 p{
+			width: 75%;
+			padding-left: 5%;
+		}
+
+
+		.SetParameters{
+			border: 2px solid #8ad2ce;
+			display: block;
+			width: 90%;
+			background-color: white;
+			margin: 9px auto;
+			padding-left: 2%;
+			padding-top: 2%;
+			padding-bottom: 1.5%;
+		}
+
+		.formText{
+			margin-left: 5%;
+			margin-bottom: 0;
+		}
+
+	</style>
+</head>
+
+<body>
+	<div class="container">
+
+		<div class="row">
+			<div class="col-10 offset-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3">
+				<div class="registration">
+					<div class="signHead">
+						<a class="goToRegistration" href="#">Запис</a>
+						  <a class=" material-icons button edit" th:href="${'/rrvs'}">arrow_back</a>
+					</div>
+					<form modelAttribute="rrv" th:object="${rrv}"  th:action="@{/rrvsave}" method="post">
+							<input type="text" name="#" placeholder="#"  th:field="*{RRV_id}">
+							<input type="text" name="storageId" placeholder="Номер сховища"  th:field="*{storage_id}">
+							<input type="text" name="category" placeholder="Категорія"  th:field="*{category}">
+							<input type="text" name="nuclideList" placeholder="Список нуклідів" th:field="*{nuclide_list}">
+						     <p class="formText">Дата початку зберігання</p>
+							<input type="date" name="startDate" placeholder="Дата початку зберігання" th:field="*{Storage_start_date}">
+							<input type="text" name="organization" placeholder="Характеристики" th:field="*{Character_RRV}">
+							<input type="text" name="notes" placeholder="Примітки"  th:field="*{Notes_RRV}">
+							<p><input type="submit" name="LogIn" value="Зберегти"></p>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

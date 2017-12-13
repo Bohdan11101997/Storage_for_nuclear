@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en"
+	  xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+	<meta charset="UTF-8">
+	<title>Реєстрація</title>
+	<link rel="shortcut icon" href="images/radioactive.png" type="image x-icon">
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/var36_css.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+<div class="container">
+
+	<div class="row">
+		<div class="col-10 offset-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3">
+			<div class="registration">
+				<div class="signHead">
+					<a class="goToRegistration" href="#">Реєстрація</a>
+					<a class=" material-icons button edit" th:href="${'/mainPage'}">arrow_back</a>
+				</div>
+
+				<form autocomplete="off" action="#"  method="post" th:action="@{/registration}"th:object="${user}" >
+					<label th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></label>
+					<input type="text" th:field="*{name}" placeholder="Name"/>
+					<label	th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></label>
+					<input type="text" th:field="*{lastName}" placeholder="Last Name"/>
+					<label th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></label>
+					<input type="text" th:field="*{email}" placeholder="Email"/>
+					<label th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></label>
+					<input type="password" th:field="*{password}" placeholder="Password"/>
+					<p><input type="submit" name="LogIn" value="Реєстрація"></p>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
