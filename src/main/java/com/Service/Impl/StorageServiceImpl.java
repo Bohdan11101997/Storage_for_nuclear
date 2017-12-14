@@ -45,4 +45,9 @@ public class StorageServiceImpl implements StorageService {
         return storageRepository.getStorage_id();
     }
 
+    @Override
+    public Double All_Amount_Storage_BRV(Integer storage_id) {
+        return storageRepository.All_Amount_Storage_BRV(storage_id);
+    }
+
 }

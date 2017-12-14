@@ -12,4 +12,5 @@ public interface StorageService {
     Storage SaveStorage(Storage storage);
     List<Storage> OrderByCapacity();
    List<Storage> getStorage_id();
+   Double All_Amount_Storage_BRV(Integer storage_id);
 }

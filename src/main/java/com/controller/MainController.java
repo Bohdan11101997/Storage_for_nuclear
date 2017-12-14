@@ -21,7 +21,7 @@ public class MainController {
     }
 
     //TRV
-    TrvService trvService;
+    private TrvService trvService;
 
     @Autowired
     public void setTrvService(TrvService trvService) {
@@ -87,7 +87,7 @@ public class MainController {
     }
 //Type_div
 
-    Type_divService type_divService;
+   private   Type_divService type_divService;
 
    @Autowired
     public void setType_divService(Type_divService type_divService) {
@@ -116,13 +116,13 @@ public class MainController {
         model.addAttribute("All_Amount_RRVS", this.nuclide_listService.All_Amount_RRVS());
         model.addAttribute("All_Activity_RRVS", this.nuclide_listService.All_Activity_RRVS());
         model.addAttribute("AllStorages", this.storageService.getAll());
-Storage storage = new Storage();
 
-        model.addAttribute("SumActivity1",this.nuclide_listService.All_Activity_Storage_BRV(storageService.getById(1))+this.nuclide_listService.All_Activity_Storage_TRV(storageService.getById(1))+this.nuclide_listService.All_Activity_Storage_RRV(storageService.getById(1))+this.nuclide_listService.All_Activity_Storage_DIV(storageService.getById(1)));
+
+//        model.addAttribute("SumActivity1",this.nuclide_listService.All_Activity_Storage_BRV(storageService.getById(1))+this.nuclide_listService.All_Activity_Storage_TRV(storageService.getById(1))+this.nuclide_listService.All_Activity_Storage_RRV(storageService.getById(1))+this.nuclide_listService.All_Activity_Storage_DIV(storageService.getById(1)));
         model.addAttribute("SumActivity2",this.nuclide_listService.All_Activity_Storage_BRV(storageService.getById(2))+this.nuclide_listService.All_Activity_Storage_TRV(storageService.getById(2))+this.nuclide_listService.All_Activity_Storage_RRV(storageService.getById(2))+this.nuclide_listService.All_Activity_Storage_DIV(storageService.getById(2)));
         model.addAttribute("SumActivity3",this.nuclide_listService.All_Activity_Storage_BRV(storageService.getById(3))+this.nuclide_listService.All_Activity_Storage_TRV(storageService.getById(3))+this.nuclide_listService.All_Activity_Storage_RRV(storageService.getById(3))+this.nuclide_listService.All_Activity_Storage_DIV(storageService.getById(3)));
         model.addAttribute("SumActivity4",this.nuclide_listService.All_Activity_Storage_BRV(storageService.getById(4))+this.nuclide_listService.All_Activity_Storage_TRV(storageService.getById(4))+this.nuclide_listService.All_Activity_Storage_RRV(storageService.getById(4))+this.nuclide_listService.All_Activity_Storage_DIV(storageService.getById(4)));
-        model.addAttribute("SumAmount1",this.nuclide_listService.All_Amount_Storage_BRV(storageService.getById(1))+this.nuclide_listService.All_Amount_Storage_TRV(storageService.getById(1)) +this.nuclide_listService.All_Amount_Storage_RRV(storageService.getById(1))+this.nuclide_listService.All_Amount_Storage_DIV(storageService.getById(1)));
+       // model.addAttribute("SumAmount1",this.nuclide_listService.All_Amount_Storage_BRV(storageService.getById(1))+this.nuclide_listService.All_Amount_Storage_TRV(storageService.getById(1)) +this.nuclide_listService.All_Amount_Storage_RRV(storageService.getById(1))+this.nuclide_listService.All_Amount_Storage_DIV(storageService.getById(1)));
         model.addAttribute("SumAmount2",this.nuclide_listService.All_Amount_Storage_BRV(storageService.getById(2))+this.nuclide_listService.All_Amount_Storage_TRV(storageService.getById(2)) +this.nuclide_listService.All_Amount_Storage_RRV(storageService.getById(2))+this.nuclide_listService.All_Amount_Storage_DIV(storageService.getById(2)));
         model.addAttribute("SumAmount3",this.nuclide_listService.All_Amount_Storage_BRV(storageService.getById(3))+this.nuclide_listService.All_Amount_Storage_TRV(storageService.getById(3)) +this.nuclide_listService.All_Amount_Storage_RRV(storageService.getById(3))+this.nuclide_listService.All_Amount_Storage_DIV(storageService.getById(3)));
         model.addAttribute("SumAmount4",this.nuclide_listService.All_Amount_Storage_BRV(storageService.getById(4))+this.nuclide_listService.All_Amount_Storage_TRV(storageService.getById(4)) +this.nuclide_listService.All_Amount_Storage_RRV(storageService.getById(4))+this.nuclide_listService.All_Amount_Storage_DIV(storageService.getById(4)));
