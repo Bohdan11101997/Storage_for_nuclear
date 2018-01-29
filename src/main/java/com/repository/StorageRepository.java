@@ -21,4 +21,6 @@ public interface StorageRepository extends JpaRepository<Storage, Integer> {
 
     @Query(value = "select sum(n.amount) from Nuclide_list n inner join  n.brvs b  inner join b.storage_id where b.storage_id=:storage_id")
     Double All_Amount_Storage_BRV(@Param("storage_id") Integer storage_id);
+
+    List<Storage> findByName(String name);
 }

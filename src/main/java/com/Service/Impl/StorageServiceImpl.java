@@ -50,4 +50,9 @@ public class StorageServiceImpl implements StorageService {
         return storageRepository.All_Amount_Storage_BRV(storage_id);
     }
 
+    @Override
+    public List<Storage> FindStorageByName(String name) {
+        return storageRepository.findByName(name);
+    }
+
 }

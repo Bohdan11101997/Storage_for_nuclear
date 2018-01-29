@@ -2,7 +2,9 @@ package com.controller;
 
 import com.Entity.*;
 import com.Service.*;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class MainController {
+final  static Logger logger = Logger.getLogger(MainController.class);
 
     //BRV
     private BrvService brvService;
@@ -100,6 +103,7 @@ public class MainController {
     @RequestMapping(value = "/dovidka")
     public String dovidka()
     {
+        logger.info("Dovidka");
         return "chemicalEL";
     }
 
@@ -118,14 +122,6 @@ public class MainController {
         model.addAttribute("AllStorages", this.storageService.getAll());
 
 
-//        model.addAttribute("SumActivity1",this.nuclide_listService.All_Activity_Storage_BRV(storageService.getById(1))+this.nuclide_listService.All_Activity_Storage_TRV(storageService.getById(1))+this.nuclide_listService.All_Activity_Storage_RRV(storageService.getById(1))+this.nuclide_listService.All_Activity_Storage_DIV(storageService.getById(1)));
-        model.addAttribute("SumActivity2",this.nuclide_listService.All_Activity_Storage_BRV(storageService.getById(2))+this.nuclide_listService.All_Activity_Storage_TRV(storageService.getById(2))+this.nuclide_listService.All_Activity_Storage_RRV(storageService.getById(2))+this.nuclide_listService.All_Activity_Storage_DIV(storageService.getById(2)));
-        model.addAttribute("SumActivity3",this.nuclide_listService.All_Activity_Storage_BRV(storageService.getById(3))+this.nuclide_listService.All_Activity_Storage_TRV(storageService.getById(3))+this.nuclide_listService.All_Activity_Storage_RRV(storageService.getById(3))+this.nuclide_listService.All_Activity_Storage_DIV(storageService.getById(3)));
-        model.addAttribute("SumActivity4",this.nuclide_listService.All_Activity_Storage_BRV(storageService.getById(4))+this.nuclide_listService.All_Activity_Storage_TRV(storageService.getById(4))+this.nuclide_listService.All_Activity_Storage_RRV(storageService.getById(4))+this.nuclide_listService.All_Activity_Storage_DIV(storageService.getById(4)));
-       // model.addAttribute("SumAmount1",this.nuclide_listService.All_Amount_Storage_BRV(storageService.getById(1))+this.nuclide_listService.All_Amount_Storage_TRV(storageService.getById(1)) +this.nuclide_listService.All_Amount_Storage_RRV(storageService.getById(1))+this.nuclide_listService.All_Amount_Storage_DIV(storageService.getById(1)));
-        model.addAttribute("SumAmount2",this.nuclide_listService.All_Amount_Storage_BRV(storageService.getById(2))+this.nuclide_listService.All_Amount_Storage_TRV(storageService.getById(2)) +this.nuclide_listService.All_Amount_Storage_RRV(storageService.getById(2))+this.nuclide_listService.All_Amount_Storage_DIV(storageService.getById(2)));
-        model.addAttribute("SumAmount3",this.nuclide_listService.All_Amount_Storage_BRV(storageService.getById(3))+this.nuclide_listService.All_Amount_Storage_TRV(storageService.getById(3)) +this.nuclide_listService.All_Amount_Storage_RRV(storageService.getById(3))+this.nuclide_listService.All_Amount_Storage_DIV(storageService.getById(3)));
-        model.addAttribute("SumAmount4",this.nuclide_listService.All_Amount_Storage_BRV(storageService.getById(4))+this.nuclide_listService.All_Amount_Storage_TRV(storageService.getById(4)) +this.nuclide_listService.All_Amount_Storage_RRV(storageService.getById(4))+this.nuclide_listService.All_Amount_Storage_DIV(storageService.getById(4)));
         model.addAttribute("AllDivs", this.divService.getAll());
         model.addAttribute("AllTrvs", this.trvService.getAll());
         model.addAttribute("AllBrvs", this.brvService.getAll());
@@ -177,6 +173,8 @@ public class MainController {
                 storageService.getById(Integer.valueOf(brvResource.getStorage_id()))
         );
        this.brvService.SaveBrv(brv);
+       logger.info("BRV was saved");
+
         return "redirect:/brvs";
     }
 
@@ -200,9 +198,6 @@ public class MainController {
 
 
     //TrvController
-
-
-
     @RequestMapping(value = "/trvs", method = RequestMethod.GET)
     public String listTrvs( Model model) {
         model.addAttribute("AllTrvs", this.trvService.getAll());
@@ -223,6 +218,7 @@ public class MainController {
                 group_by_powerService.getByID(String.valueOf(trvResource.getGroup_by_power()))
         );
         trvService.SaveTRV(trv);
+logger.info("TRV was saved");
         return "newItemTrv";
     }
     @RequestMapping(value = "/trvsave", method = RequestMethod.POST)
@@ -271,6 +267,7 @@ public class MainController {
         model.addAttribute("AllDivs", this.divService.getAll());
         model.addAttribute("All_Amount_DIVS", this.nuclide_listService.All_Amount_DIVS());
         model.addAttribute("All_Activity_DIVS", this.nuclide_listService.All_Activity_DIVS());
+        logger.info("GET DIV list");
         return "div";
     }
 
@@ -287,18 +284,21 @@ public class MainController {
                 nuclide_listService.getByID(Integer.valueOf(divResource.getNuclide_list()))
         );
         divService.saveDiv(div);
+        logger.info("Create new DIV");
         return "newItemDiv";
     }
 
     @RequestMapping(value = "/divsave", method = RequestMethod.POST)
     public String saveDiv(Div div){
         divService.saveDiv(div);
+        logger.info("DIV  save");
         return "redirect:/divs";
     }
 
     @RequestMapping("/div/edit/{id}")
     public String editDiv(@PathVariable("id") Long id, Model model){
         model.addAttribute("div", this.divService.getById(id));
+
         return "newItemDiv";
     }
 
@@ -338,6 +338,11 @@ public class MainController {
         return "storage";
     }
 
+    @RequestMapping(value = "/FindStorageByName", method = RequestMethod.POST)
+    public String findBySearchTerm(@RequestParam String name, Model model) {
+        model.addAttribute( "AllStorages" ,this.storageService.FindStorageByName(name));
+        return "storage";
+    }
 
     @RequestMapping(value = "/OrderByCapacity", method = RequestMethod.GET)
     public String OrderByCapacity( Model model) {
@@ -364,9 +369,7 @@ public class MainController {
         System.out.println("TRV"+this.nuclide_listService.All_Activity_Storage_TRV(storageService.getById(id)));
         System.out.println("RRV"+this.nuclide_listService.All_Activity_Storage_RRV(storageService.getById(id)));
         System.out.println("DIV"+this.nuclide_listService.All_Activity_Storage_DIV(storageService.getById(id)));
-
         System.out.println("Sum"+this.nuclide_listService.All_Activity_Storage_BRV(storageService.getById(id))+this.nuclide_listService.All_Activity_Storage_TRV(storageService.getById(id))+this.nuclide_listService.All_Activity_Storage_RRV(storageService.getById(id))+this.nuclide_listService.All_Activity_Storage_DIV(storageService.getById(id)));
-
         System.out.println("BRV"+this.nuclide_listService.All_Amount_Storage_BRV(storageService.getById(id)));
         System.out.println("TRV"+this.nuclide_listService.All_Amount_Storage_TRV(storageService.getById(id)));
         System.out.println("RRV"+this.nuclide_listService.All_Amount_Storage_RRV(storageService.getById(id)));

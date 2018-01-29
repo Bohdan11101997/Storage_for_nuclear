@@ -24,10 +24,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Qualifier("dataSource")
 	@Autowired
 	private DataSource dataSource;
-	
+
 	@Value("${spring.queries.users-query}")
 	private String usersQuery;
-	
+
 	@Value("${spring.queries.roles-query}")
 	private String rolesQuery;
 
@@ -61,9 +61,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.logoutSuccessUrl("/login").and().exceptionHandling()
 				.accessDeniedPage("/access-denied");
 	}
-	
+
 	@Override
-	public void configure(WebSecurity web) throws Exception {
+	public void configure(WebSecurity web) {
 	    web
 	       .ignoring()
 	       .antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/images/**");

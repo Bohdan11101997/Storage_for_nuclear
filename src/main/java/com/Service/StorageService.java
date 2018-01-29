@@ -13,4 +13,6 @@ public interface StorageService {
     List<Storage> OrderByCapacity();
    List<Storage> getStorage_id();
    Double All_Amount_Storage_BRV(Integer storage_id);
+
+   List<Storage> FindStorageByName(String name);
 }

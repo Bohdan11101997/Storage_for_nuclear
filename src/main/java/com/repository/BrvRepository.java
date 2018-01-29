@@ -3,6 +3,7 @@ package com.repository;
 import com.Entity.BRV;
 import com.Entity.Group_by_power;
 import com.Entity.Nuclide_list;
+import org.apache.log4j.Logger;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -14,7 +15,6 @@ import java.util.List;
 
 @Repository
 public interface BrvRepository extends JpaRepository<BRV, Long> {
-
 
 //@Query(value = "select c1 from BRV c1 inner join fetch c1.nuclide_list b")
 //List<BRV>  listBrvs ();

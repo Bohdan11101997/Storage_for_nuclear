@@ -28,7 +28,7 @@ public class LoginController {
 		modelAndView.setViewName("startPage");
 		return modelAndView;
 	}
-	
+
 	
 	@RequestMapping(value="/registration", method = RequestMethod.GET)
 	public ModelAndView registration(){

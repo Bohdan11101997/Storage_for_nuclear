@@ -682,9 +682,13 @@
 					</div>
 
 					<form th:object="${storage}" th:action="@{/storagesave}" method="post">
+						<p class="formText">Ідентифікатор</p>
 						<input type="text" name="#" placeholder="#"  th:field="*{Storage_id}">
+						<p class="formText">Назва</p>
 						<input type="text" name="name" placeholder="Назва"  th:field="*{name}">
+						<p class="formText">Тип відходів</p>
 						<input type="text" name="type" placeholder="Тип відходів"   th:field="*{type_waste}" >
+						<p class="formText">Місткість</p>
 						<input type="text" name="capacity" placeholder="Місткість"  th:field="*{Capacity}">
                           <p><input type="submit" name="LogIn" value="Зберегти"></p>
 

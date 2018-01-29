@@ -47,7 +47,7 @@
                   </th>
 
                 </tr>
-              <tr th:each="storage:  ${AllStorages}">
+              <tr th:each="storage: ${AllStorages}">
                   <td th:text="${storage.storage_id}"></td>
                   <td th:text="${storage.name}"></td>
                   <td th:text="${storage.type_waste}"></td>
@@ -75,9 +75,22 @@
                     <a th:href="${'/OrderByCapacity'}">Сортувати за вмісткістю</a>
 
                 </form>
+               <!-- <form method="post" action="/FindStorageByName">
+                    <label for="storage">Storage name:</label>
+                    <!--
+                        name - указываем имя параметра, по которому получаем данные в контроллере
+                        type - типу инпута для ввода текста
+                        placeholder - чем заполнить поле, когда значение не введено
+                        id - просто идентификатор поля на странице для тега label
+
+                    <input type="text" id="storage" name="name" placeholder="name storage"/>
+                    <br/>
+                    <input type="submit" value="send"/>
+                </form>
             </div>
-        </div>
+        </div>-->
    	</div>
 </div>
+    </div>
 </body>
 </html>

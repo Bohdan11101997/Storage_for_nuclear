@@ -3,6 +3,7 @@ package com.Service.Impl;
 import com.Entity.BRV;
 import com.Service.BrvService;
 import com.repository.BrvRepository;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,8 @@ import java.util.TreeMap;
 
 @Service
 public class BrvServiceImpl implements BrvService {
+
+    final  static Logger logger = Logger.getLogger(BrvServiceImpl.class);
     @Autowired
     BrvRepository brvRepository;
 
@@ -36,7 +39,10 @@ brvRepository.delete(id);
     @Override
     public BRV SaveBrv(BRV brv) {
        BRV saveBrv=brvRepository.saveAndFlush(brv);
+
+        logger.info("BRV was saved");
         return  saveBrv;
+
     }
 
     @Override
@@ -47,17 +53,6 @@ brvRepository.delete(id);
 
     @Override
     public List<BRV> OrderbyGroup_by_power() {
-//        Map<Integer, BRV> group = new TreeMap<>();
-//        group.put(1, brvRepository.findAllByGroup_by_power().get(0));
-//        group.put(2, brvRepository.findAllByGroup_by_power().get(1));
-//        group.put(3, brvRepository.findAllByGroup_by_power().get(2));
-//        group.entrySet().stream()
-//                .sorted(Map.Entry.<Integer, BRV.>comparingByKey().reversed())
-//                .forEach(System.out::println);
-//
-//        List<BRV> listGroup= new ArrayList(group.values());
-//
-//       return  listGroup;
    return brvRepository.findAllByGroup_by_power();
     }
 
